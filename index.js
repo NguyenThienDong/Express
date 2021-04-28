@@ -1,4 +1,5 @@
 var express = require('express');
+var cookieParser = require('cookie-parser');
 
 var userRouter = require('./routes/user.route');
 
@@ -11,6 +12,7 @@ app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 app.use(express.static('public'));
+app.use(cookieParser());
 
 app.get('/', (req, res) => {
   res.render('index', {
