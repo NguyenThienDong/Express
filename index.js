@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 var express = require('express');
 var cookieParser = require('cookie-parser');
 
@@ -15,7 +17,7 @@ app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 app.use(express.static('public'));
-app.use(cookieParser('tgdghfdfifnjnf2346'));
+app.use(cookieParser(process.env.SESSION_SECRET));
 
 app.get('/', (req, res) => {
   res.render('index', {
